@@ -1,0 +1,53 @@
+﻿<Window x:Class="Newtonsoft.Googleman.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Googleman" WindowStyle="None" WindowState="Minimized" Background="Black" ShowInTaskbar="False" Icon="/Googleman;component/Resources/google.ico">
+  <Window.Resources>
+    <Storyboard x:Key="sb" x:Name="sb" Timeline.DesiredFrameRate="45">
+      <DoubleAnimation
+        Storyboard.TargetName="BackgroundRotate"
+        Storyboard.TargetProperty="Angle"
+        From="0"
+        To="1080"
+        Duration="0:0:01.5" />
+
+      <DoubleAnimation
+        Storyboard.TargetName="LogoScale"
+        Storyboard.TargetProperty="ScaleX"
+        DecelerationRatio="0.5"
+        AutoReverse="true"
+        To="1"
+        Duration="0:0:00.75" />
+      <DoubleAnimation
+        x:Name="LogoScaleYAnimation"
+        Storyboard.TargetName="LogoScale"
+        Storyboard.TargetProperty="ScaleY"
+        DecelerationRatio="0.5"
+        AutoReverse="true"
+        To="1"
+        Duration="0:0:00.75" />
+    </Storyboard>
+  </Window.Resources>
+  <Image>
+    <Image.Source>
+      <DrawingImage>
+        <DrawingImage.Drawing>
+          <DrawingGroup x:Name="ParentGroup" RenderOptions.BitmapScalingMode="NearestNeighbor">
+            <DrawingGroup>
+              <DrawingGroup.Transform>
+                <RotateTransform x:Name="BackgroundRotate" />
+              </DrawingGroup.Transform>
+              <ImageDrawing x:Name="BackgroundRectangle" />
+            </DrawingGroup>
+            <DrawingGroup>
+              <DrawingGroup.Transform>
+                <ScaleTransform x:Name="LogoScale" />
+              </DrawingGroup.Transform>
+              <ImageDrawing x:Name="LogoRectangle" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingImage.Drawing>
+      </DrawingImage>
+    </Image.Source>
+  </Image>
+</Window>
