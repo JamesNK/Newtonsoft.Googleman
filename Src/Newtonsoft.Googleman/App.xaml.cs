@@ -16,7 +16,7 @@ namespace Newtonsoft.Googleman
 
     private GooglemanApplication _application;
 
-    private void Application_Startup(object sender, StartupEventArgs e)
+    private void ApplicationStartup(object sender, StartupEventArgs e)
     {
       Logger.Setup();
 
@@ -41,7 +41,7 @@ namespace Newtonsoft.Googleman
       }
     }
 
-    private void Application_Exit(object sender, ExitEventArgs e)
+    private void ApplicationExit(object sender, ExitEventArgs e)
     {
       if (_application != null)
         _application.Dispose();

@@ -26,13 +26,21 @@ namespace Newtonsoft.Googleman.ViewModels
 
     private MainView MainView
     {
-      get { return (MainView) View; }
+      get
+      {
+        // yeah I know you shouldn't access the view in MVVM
+        // but I don't want any databinding overhead on this page
+        return (MainView) View;
+      }
     }
 
     protected internal override void Loaded()
     {
       Storyboard sb = (Storyboard)View.TryFindResource("sb");
       sb.Completed += SplashScreenAnimationComplete;
+
+      // ensure nothing is visible on load
+      Hide();
     }
 
     private void SetupSplashScreen(ImageSource backgroundImage)
@@ -94,6 +102,7 @@ namespace Newtonsoft.Googleman.ViewModels
 
     public void DisplaySplashScreen(ImageSource backgroundImage)
     {
+      // ensure the splash screen isn't interrupted
       if (!_displaySplashScreen)
       {
         lock (_lock)
@@ -134,6 +143,7 @@ namespace Newtonsoft.Googleman.ViewModels
     {
       MainView mainView = (MainView)View;
 
+      // release images
       mainView.BackgroundRectangle.ImageSource = null;
       mainView.LogoRectangle.ImageSource = null;
 

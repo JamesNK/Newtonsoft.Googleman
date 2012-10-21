@@ -92,6 +92,8 @@ namespace Newtonsoft.Googleman
       catch
       {
         _tray.RunAtStartup = current;
+
+        // I haven't tested but I'm pretty sure users with UAC on will get this error
         MessageBox.Show("You do not have permission to change this.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
       }
     }
