@@ -5,78 +5,78 @@ using System.Windows.Markup;
 
 namespace Newtonsoft.Googleman.Common.Hotkeys
 {
-  [Serializable]
-  [TypeConverter(typeof(HotkeyConverter))]
-  [ValueSerializer(typeof(HotkeyValueSerializer))]
-  public struct Hotkey : IEquatable<Hotkey>
-  {
-    public static readonly Hotkey None = new Hotkey();
-
-    private readonly ModifierKeys _modifiers;
-    private readonly Key _key;
-
-    public Hotkey(ModifierKeys modifiers, Key key)
+    [Serializable]
+    [TypeConverter(typeof(HotkeyConverter))]
+    [ValueSerializer(typeof(HotkeyValueSerializer))]
+    public struct Hotkey : IEquatable<Hotkey>
     {
-      _modifiers = modifiers;
-      _key = key;
-    }
+        public static readonly Hotkey None = new Hotkey();
 
-    public ModifierKeys Modifiers
-    {
-      get { return _modifiers; }
-    }
+        private readonly ModifierKeys _modifiers;
+        private readonly Key _key;
 
-    public Key Key
-    {
-      get { return _key; }
-    }
+        public Hotkey(ModifierKeys modifiers, Key key)
+        {
+            _modifiers = modifiers;
+            _key = key;
+        }
 
-    public override string ToString()
-    {
-      return TypeDescriptor.GetConverter(this).ConvertToInvariantString(this);
-    }
+        public ModifierKeys Modifiers
+        {
+            get { return _modifiers; }
+        }
 
-    public bool Equals(Hotkey other)
-    {
-      return other._key == _key &&
-             other._modifiers == _modifiers;
-    }
+        public Key Key
+        {
+            get { return _key; }
+        }
 
-    public override bool Equals(object obj)
-    {
-      if (obj is Hotkey)
-      {
-        return Equals((Hotkey)(obj));
-      }
+        public override string ToString()
+        {
+            return TypeDescriptor.GetConverter(this).ConvertToInvariantString(this);
+        }
 
-      return false;
-    }
+        public bool Equals(Hotkey other)
+        {
+            return other._key == _key &&
+                   other._modifiers == _modifiers;
+        }
 
-    public override int GetHashCode()
-    {
-      return
-          Modifiers.GetHashCode() ^
-          Key.GetHashCode();
-    }
+        public override bool Equals(object obj)
+        {
+            if (obj is Hotkey)
+            {
+                return Equals((Hotkey)(obj));
+            }
 
-    private bool IsModifierOn(ModifierKeys m)
-    {
-      return m == (_modifiers & m);
-    }
+            return false;
+        }
 
-    public static bool operator ==(Hotkey first, Hotkey second)
-    {
-      return first.Equals(second);
-    }
+        public override int GetHashCode()
+        {
+            return
+                Modifiers.GetHashCode() ^
+                Key.GetHashCode();
+        }
 
-    public static bool operator !=(Hotkey first, Hotkey second)
-    {
-      return !first.Equals(second);
-    }
+        private bool IsModifierOn(ModifierKeys m)
+        {
+            return m == (_modifiers & m);
+        }
 
-    public static Hotkey Parse(string str)
-    {
-      return (Hotkey)TypeDescriptor.GetConverter(typeof(Hotkey)).ConvertFromInvariantString(str);
+        public static bool operator ==(Hotkey first, Hotkey second)
+        {
+            return first.Equals(second);
+        }
+
+        public static bool operator !=(Hotkey first, Hotkey second)
+        {
+            return !first.Equals(second);
+        }
+
+        public static Hotkey Parse(string str)
+        {
+            return (Hotkey)TypeDescriptor.GetConverter(typeof(Hotkey)).ConvertFromInvariantString(str);
+        }
     }
-  }
 }

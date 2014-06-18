@@ -6,50 +6,52 @@ using System.Windows.Input;
 
 namespace Newtonsoft.Googleman.Common
 {
-  public class DelegateCommand : ICommand
-  {
-    private readonly Predicate<object> _canExecute;
-    private readonly Action<object> _execute;
-
-    public event EventHandler CanExecuteChanged;
-
-    public DelegateCommand(Action execute)
-      : this(p => execute(), null)
+    public class DelegateCommand : ICommand
     {
-    }
+        private readonly Predicate<object> _canExecute;
+        private readonly Action<object> _execute;
 
-    public DelegateCommand(Action<object> execute)
-      : this(execute, null)
-    {
-    }
+        public event EventHandler CanExecuteChanged;
 
-    public DelegateCommand(Action<object> execute, Predicate<object> canExecute)
-    {
-      _execute = execute;
-      _canExecute = canExecute;
-    }
+        public DelegateCommand(Action execute)
+            : this(p => execute(), null)
+        {
+        }
 
-    public bool CanExecute(object parameter)
-    {
-      if (_canExecute == null)
-      {
-        return true;
-      }
+        public DelegateCommand(Action<object> execute)
+            : this(execute, null)
+        {
+        }
 
-      return _canExecute(parameter);
-    }
+        public DelegateCommand(Action<object> execute, Predicate<object> canExecute)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
 
-    public void Execute(object parameter)
-    {
-      _execute(parameter);
-    }
+        public bool CanExecute(object parameter)
+        {
+            if (_canExecute == null)
+            {
+                return true;
+            }
 
-    public void RaiseCanExecuteChanged()
-    {
-      if (CanExecuteChanged != null)
-      {
-        CanExecuteChanged(this, EventArgs.Empty);
-      }
+            return _canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute(parameter);
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            EventHandler canExecuteChanged = CanExecuteChanged;
+
+            if (canExecuteChanged != null)
+            {
+                canExecuteChanged(this, EventArgs.Empty);
+            }
+        }
     }
-  }
 }

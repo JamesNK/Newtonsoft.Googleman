@@ -9,34 +9,36 @@ using Newtonsoft.Googleman.Common;
 
 namespace Newtonsoft.Googleman.ViewModels
 {
-  public class AboutViewModel : ViewModelBase
-  {
-    public ICommand OkCommand { get; private set; }
-    public ICommand LaunchHomepageCommand { get; private set; }
-
-    public string Version
+    public class AboutViewModel : ViewModelBase
     {
-      get
-      {
-        Version version = Assembly.GetExecutingAssembly().GetName().Version;
-        return Constants.ApplicationName + ", Version " + version.Major + "." + version.Minor;
-      }
-    }
+        public ICommand OkCommand { get; private set; }
+        public ICommand LaunchHomepageCommand { get; private set; }
 
-    public AboutViewModel()
-    {
-      OkCommand = new DelegateCommand(OnOk);
-      LaunchHomepageCommand = new DelegateCommand(OnLaunchHomepage);
-    }
+        public string Version
+        {
+            get
+            {
+                Version version = Assembly.GetExecutingAssembly().GetName().Version;
+                return Constants.ApplicationName + ", Version " + version.Major + "." + version.Minor;
+            }
+        }
 
-    private void OnOk()
-    {
-      Close();
-    }
+        public AboutViewModel()
+        {
+            OkCommand = new DelegateCommand(OnOk);
+            LaunchHomepageCommand = new DelegateCommand(OnLaunchHomepage);
+        }
 
-    private void OnLaunchHomepage()
-    {
-      Process.Start("http://james.newtonking.com");
+        private void OnOk()
+        {
+            Close();
+        }
+
+        private void OnLaunchHomepage()
+        {
+            string url = "http://james.newtonking.com";
+            ProcessStartInfo startInfo = new ProcessStartInfo("explorer.exe", url);
+            Process.Start(startInfo);
+        }
     }
-  }
 }

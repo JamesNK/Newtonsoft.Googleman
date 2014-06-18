@@ -13,14 +13,14 @@ using System.Windows.Shapes;
 
 namespace Newtonsoft.Googleman.Views
 {
-  /// <summary>
-  /// Interaction logic for MainView.xaml
-  /// </summary>
-  public partial class MainView : Window
-  {
-    public MainView()
+    /// <summary>
+    /// Interaction logic for MainView.xaml
+    /// </summary>
+    public partial class MainView : Window
     {
-      InitializeComponent();
+        public MainView()
+        {
+            InitializeComponent();
+        }
     }
-  }
 }

@@ -5,8 +5,8 @@ using System.Threading;
 
 namespace Newtonsoft.Googleman.Common
 {
-  public static class Constants
-  {
-    public const string ApplicationName = "Googleman";
-  }
+    public static class Constants
+    {
+        public const string ApplicationName = "Googleman";
+    }
 }
