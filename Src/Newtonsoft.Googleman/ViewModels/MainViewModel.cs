@@ -86,10 +86,10 @@ namespace Newtonsoft.Googleman.ViewModels
 
       MainView.LogoRectangle.ImageSource = logoImage;
 
-      Size unscaledLogoSize = new Size(36, 15);
+      Size unscaledLogoSize = new Size(252, 105);
 
       double scale = MainView.Width/unscaledLogoSize.Width;
-      Size scaledLogoSize = new Size(36*scale, 15*scale);
+      Size scaledLogoSize = new Size(unscaledLogoSize.Width * scale, unscaledLogoSize.Height * scale);
 
       double left = (MainView.Width/2) - (scaledLogoSize.Width/2);
       double top = (MainView.Height/2) - (scaledLogoSize.Height/2);

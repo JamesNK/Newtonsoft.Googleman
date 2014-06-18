@@ -14,18 +14,24 @@
       <DoubleAnimation
         Storyboard.TargetName="LogoScale"
         Storyboard.TargetProperty="ScaleX"
-        DecelerationRatio="0.5"
         AutoReverse="true"
         To="1"
-        Duration="0:0:00.75" />
+        Duration="0:0:00.70">
+        <DoubleAnimation.EasingFunction>
+          <PowerEase Power="1.5" EasingMode="EaseOut"/>
+        </DoubleAnimation.EasingFunction>
+      </DoubleAnimation>
       <DoubleAnimation
         x:Name="LogoScaleYAnimation"
         Storyboard.TargetName="LogoScale"
         Storyboard.TargetProperty="ScaleY"
-        DecelerationRatio="0.5"
         AutoReverse="true"
         To="1"
-        Duration="0:0:00.75" />
+        Duration="0:0:00.70">
+        <DoubleAnimation.EasingFunction>
+          <PowerEase Power="1.5" EasingMode="EaseOut"/>
+        </DoubleAnimation.EasingFunction>
+      </DoubleAnimation>
     </Storyboard>
   </Window.Resources>
   <Image>

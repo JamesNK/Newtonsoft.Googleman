@@ -1,6 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Googleman", "Newtonsoft.Googleman\Newtonsoft.Googleman.csproj", "{85D4D13F-FFAB-4D40-B2A4-BE2902E58132}"
 EndProject
 Global
